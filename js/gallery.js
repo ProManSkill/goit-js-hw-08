@@ -66,6 +66,17 @@ const images = [
 
 const galleryItems = document.querySelector(".gallery");
 galleryItems.innerHTML = createMarcup(images)
+galleryItems.addEventListener('click', function (event) {
+    event.preventDefault()
+    if (event.currentTarget === event.target) return
+    const originalImage = event.target.dataset.source
+    console.log(originalImage)
+    const instance = basicLightbox.create(`
+    <img src="${originalImage}" width="800" height="600">
+`)
+    instance.show()
+});
+
 
 function createMarcup(arr) {
     return arr.map(({preview, original, description}) => `<li class="gallery-item">
@@ -79,4 +90,14 @@ function createMarcup(arr) {
   </a>
 </li>`).join("")
 }
+
+
+
+
+
+// function handleOpen(event) {
+//     event.preventDefault()
+//     if (event.currentTarget === event.target) return
+//     console.log(event)
+// }
 
