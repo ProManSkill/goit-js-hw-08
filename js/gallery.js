@@ -59,11 +59,24 @@ const images = [
     preview:
       'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg',
     original:
-      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
+     'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
     description: 'Lighthouse Coast Sea',
   },
 ];
 
-const gallery = document.querySelector(".gallery");
-const galleryItem = document.createElement("li")
-galleryItem.classList.add("gallery-item")
+const galleryItems = document.querySelector(".gallery");
+galleryItems.innerHTML = createMarcup(images)
+
+function createMarcup(arr) {
+    return arr.map(({preview, original, description}) => `<li class="gallery-item">
+  <a class="gallery-link" href="${original}">
+    <img
+      class="gallery-image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</li>`).join("")
+}
+
