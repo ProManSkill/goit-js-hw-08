@@ -6,8 +6,7 @@
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    width: 1128px;
-    padding: 24px 156px;
+    padding-top: 24px;
     justify-content: center;
     gap: 24px;
 
