@@ -65,10 +65,10 @@ const images = [
 ];
 
 const galleryItems = document.querySelector(".gallery");
-galleryItems.innerHTML = createMarcup(images)
+galleryItems.innerHTML = createMarkup(images)
 galleryItems.addEventListener('click', function (event) {
     event.preventDefault()
-    if (event.currentTarget === event.target) return
+  if (event.target.nodeName !== "IMG") { return }
     const originalImage = event.target.dataset.source
     console.log(originalImage)
     const instance = basicLightbox.create(`
@@ -78,7 +78,7 @@ galleryItems.addEventListener('click', function (event) {
 });
 
 
-function createMarcup(arr) {
+function createMarkup(arr) {
     return arr.map(({preview, original, description}) => `<li class="gallery-item">
   <a class="gallery-link" href="${original}">
     <img
@@ -94,10 +94,4 @@ function createMarcup(arr) {
 
 
 
-
-// function handleOpen(event) {
-//     event.preventDefault()
-//     if (event.currentTarget === event.target) return
-//     console.log(event)
-// }
 
